@@ -1,0 +1,16 @@
+# NetGuard backend (Python 3.10+ on Windows 10/11)
+# Install:  py -m pip install -r requirements.txt
+#
+# Also required for ARP scanning + passive DNS capture: Npcap (https://npcap.com/#download)
+# Without Npcap the app still runs: it uses a ping sweep + ARP cache instead.
+
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+scapy>=2.5.0          # ARP discovery, packet capture via Npcap, bundled MAC vendor (OUI) database
+psutil>=5.9           # interface fallback detection
+tldextract>=5.1       # registrable domain from the bundled Public Suffix List (works offline)
+
+# Tests
+pytest>=8.0
+httpx>=0.27           # FastAPI TestClient
